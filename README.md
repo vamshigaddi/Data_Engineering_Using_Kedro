@@ -78,7 +78,8 @@ kedro run --pipeline cleaning
 ```bash
 kedro run --pipeline combining
 ```
-  
+### Postgres_data
+![Database](https://raw.githubusercontent.com/vamshigaddi/Data_Engineering_Using_Kedro/refs/heads/main/Database_scrnst.png)
 ### Jupyter
 To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
 
