@@ -8,18 +8,52 @@ This is your new Kedro project with Kedro-Viz and PySpark setup, which was gener
 
 Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
 
-## Rules and guidelines
+## Dataset Representation
 
-In order to get the best out of the template:
+![Dataset Relation](https://raw.githubusercontent.com/vamshigaddi/Data_Engineering_Using_Kedro/refs/heads/main/Dataset_Relation.png)
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+## Data Flow
+![Data Flow](https://raw.githubusercontent.com/vamshigaddi/Data_Engineering_Using_Kedro/refs/heads/main/Diagram.png)
+## Setup Instructions
+Before installing the dependencies via requirements.txt, you need to set up the following environment:
+
+### 1.Download Apache Spark:
+
+- Download Apache Spark version 3.3.1 from the official Apache Spark downloads page(https://archive.apache.org/dist/spark/spark-3.3.1/). Choose the version spark-3.3.1-bin-hadoop2.7 (for Hadoop 2.x compatibility).
+  
+- Extract the downloaded file to a directory on your system (e.g., C:\spark on Windows or /opt/spark on Linux/Mac).
+- Download WinUtils (for Windows users):
+- click here to download (https://github.com/steveloughran/winutils/blob/master/hadoop-2.7.1/bin/winutils.exe)
+- Download the winutils.exe binary for Hadoop 2.7 from the winutils repository.
+- Place the winutils.exe file in the bin directory under your Spark installation (e.g., C:\hadoop\bin\winutils.exe on Windows).
+- Download and Install JDK 19:
+- click here and download(https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html)
+- Download the JDBC driver version 42.7.4 for connecting postgres database
+- Link: (https://jdbc.postgresql.org/download/)
+
+### Set Environment Variables:
+- For setting environment variable I will strongly recommend to watch this tutorial
+- link: [youtube](https://www.youtube.com/watch?v=OmcSTQVkrvo&t=694s)
+
+### DataBase Connection
+- For connecting to the database provide the credentials in credentials.yml
+- create credentials.yml in the conf/base directory and place the credentials init.
+#### Sparl.yml
+- replace the these two files path with your system files path,just go and see the spark.yml you will get idea.
+- Java_home path
+- jdbc_driver path
 
 ## How to install dependencies
-
-Declare any dependencies in `requirements.txt` for `pip` installation.
+1.Clone the repository:
+```bash
+git clone https://github.com/vamshigaddi/Data_Engineering_Using_Kedro.git
+cd Data_Engineering_Using_Kedro
+```
+2. create and activate virtual environment
+``` bash
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate
+``` 
 
 To install them, run:
 
@@ -34,29 +68,17 @@ You can run your Kedro project with:
 ```
 kedro run
 ```
-
-## How to test your Kedro project
-
-Have a look at the files `src/tests/test_run.py` and `src/tests/pipelines/data_science/test_pipeline.py` for instructions on how to write your tests. Run the tests as follows:
-
+### I have created two pipelines
+- cleaning 
+- combining
+### For running Pipeline separately
+``` bash
+kedro run --pipeline cleaning
 ```
-pytest
+```bash
+kedro run --pipeline combining
 ```
-
-To configure the coverage threshold, look at the `.coveragerc` file.
-
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. Install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `catalog`, `context`, `pipelines` and `session`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
+  
 ### Jupyter
 To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
 
