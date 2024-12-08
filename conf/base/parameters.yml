@@ -1,0 +1,14 @@
+## define the tables_names to store in the database
+
+cleaned_conditions: cleaned_conditions_table
+cleaned_patients: cleaned_patients_table
+cleaned_medications: cleaned_medications_table
+cleaned_symptoms: cleaned_symptoms_table
+cleaned_encounters: cleaned_encounters_table
+cleaned_patient_gender: cleaned_patient_gender_table
+
+
+
+
+
+
